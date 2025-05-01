@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "春の交流会",
+    "location": "コミュニティセンター",
+    "dateTime": "2025-05-10T14:00",
+    "members": ["山田さん", "佐藤さん"],
+    "items": ["ノート", "ペン"],
+    "link": "https://example.com/event1",
+    "registrationDeadline": "2025-05-05",
+    "isRegistered": true,
+    "isPaymentRequired": true,
+    "isPaid": false
+  },
+  {
+    "id": 2,
+    "name": "チャリティーラン",
+    "location": "市立公園",
+    "dateTime": "2025-04-20T09:00",
+    "members": ["鈴木さん", "田中さん"],
+    "items": ["運動靴", "水筒"],
+    "link": "",
+    "registrationDeadline": "2025-04-15",
+    "isRegistered": false,
+    "isPaymentRequired": false,
+    "isPaid": false
+  }
+]
