@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "春の交流会",
+    "name": "（サンプル）春の交流会",
     "location": "コミュニティセンター",
     "dateTime": "2025-05-10T14:00",
     "members": ["山田さん", "佐藤さん"],
@@ -14,13 +14,26 @@
   },
   {
     "id": 2,
-    "name": "チャリティーラン",
+    "name": "（サンプル）チャリティーラン",
     "location": "市立公園",
     "dateTime": "2025-04-20T09:00",
     "members": ["鈴木さん", "田中さん"],
     "items": ["運動靴", "水筒"],
     "link": "",
     "registrationDeadline": "2025-04-15",
+    "isRegistered": false,
+    "isPaymentRequired": false,
+    "isPaid": false
+  },
+  {
+    "id": 3,
+    "name": "2025‐26年度のクラブ情報と役員の報告・確認",
+    "location": "-",
+    "dateTime": "-",
+    "members": ["西山"],
+    "items": ["-"],
+    "link": "https://mail.google.com/mail/u/0/#inbox/FMfcgzQbdrSjMvCHxWmXNzPqjlFnrhQc",
+    "registrationDeadline": "2025-05-30",
     "isRegistered": false,
     "isPaymentRequired": false,
     "isPaid": false
