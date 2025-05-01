@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>イベント管理アプリ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold text-center mb-6">イベント管理アプリ</h1>
+    
+    <!-- 未来のイベント -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">近日中のイベント</h2>
+      <div id="upcoming-events" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+    
+    <!-- 終了したイベント -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">終了したイベント</h2>
+      <div id="past-events" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+  </div>
+
+  <script>
+    // JSONファイルからイベントを読み込む
+    async function loadEvents() {
+      try {
+        const response = await fetch('events.json');
+        const events = await response.json();
+        displayEvents(events);
+      } catch (error) {
+        console.error('イベントの読み込みに失敗しました:', error);
+      }
+    }
+
+    // イベントを表示
+    function displayEvents(events) {
+      const upcomingEvents = document.getElementById('upcoming-events');
+      const pastEvents = document.getElementById('past-events');
+      const now = new Date();
+
+      // イベントを日付順にソート
+      events.sort((a, b) => new Date(a.dateTime) - new Date(b.dateTime));
+
+      // 未来と過去のイベントを分類
+      const upcoming = events.filter(event => new Date(event.dateTime) >= now);
+      const past = events.filter(event => new Date(event.dateTime) < now);
+
+      // 未来のイベントを表示
+      upcomingEvents.innerHTML = upcoming.map(event => createEventCard(event)).join('');
+      // 過去のイベントを表示
+      pastEvents.innerHTML = past.map(event => createEventCard(event)).join('');
+    }
+
+    // イベントカードを生成
+    function createEventCard(event) {
+      return `
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold">${event.name}</h3>
+          <p><strong>場所:</strong> ${event.location}</p>
+          <p><strong>日程:</strong> ${new Date(event.dateTime).toLocaleString('ja-JP')}</p>
+          <p><strong>参加メンバー:</strong> ${event.members.join(', ')}</p>
+          <p><strong>持ち物:</strong> ${event.items.join(', ')}</p>
+          ${event.link ? `<p><strong>リンク:</strong> <a href="${event.link}" class="text-blue-500 underline" target="_blank">詳細</a></p>` : ''}
+          <p><strong>登録締切:</strong> ${new Date(event.registrationDeadline).toLocaleDateString('ja-JP')}</p>
+          <p><strong>参加登録:</strong> ${event.isRegistered ? '済' : '未'}</p>
+          ${event.isPaymentRequired ? `<p><strong>振込:</strong> ${event.isPaid ? '済' : '未'}</p>` : ''}
+        </div>
+      `;
+    }
+
+    // ページロード時にイベントを読み込む
+    window.onload = loadEvents;
+  </script>
+</body>
+</html>
