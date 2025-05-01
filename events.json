@@ -37,5 +37,18 @@
     "isRegistered": false,
     "isPaymentRequired": false,
     "isPaid": false
+  },
+  {
+    "id": 4,
+    "name": "【第2650地区】2024-25年度　年度末報告会・卒業式",
+    "location": "呉竹文化センター　ホール",
+    "dateTime": "2025-06-08T13:00",
+    "members": ["-"],
+    "items": ["-"],
+    "link": "https://mail.google.com/mail/u/0/#inbox/FMfcgzQbdrQQcdDmKndbszrqxPGMnSvc",
+    "registrationDeadline": "2025-05-23",
+    "isRegistered": false,
+    "isPaymentRequired": false,
+    "isPaid": false
   }
 ]
